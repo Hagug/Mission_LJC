@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Board</title>
+</head>
+<body>
+<h1>[[${board.topic}]] 게시판</h1>
+<!--게시글 작성 버튼-->
+<button th:onclick="|location.href='@{/boards/write-view}'|">게시글 작성</button>
+<br>
+
+<!--게시글 제목 출력 (th:with - 변수선언)-->
+<div th:each="i: ${#numbers.sequence(articles.size()-1, 0, -1)}" th:with="article=${articles[i]}">
+    <p><a th:href="@{/boards/article/{id}(id=${article.id})}">[[${article.title}]]</a></p>
+</div>
+
+<!-- 홈으로 가는 링크-->
+<a href="/boards">Back</a>
+</body>
+</html>
