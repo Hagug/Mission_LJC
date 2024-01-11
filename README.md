@@ -11,7 +11,6 @@
 
 필수 요구사항 구현 방식
 
-![DB 관계도](게시판DB구성도.jpg)
 ![게시판DB구성도](https://github.com/Hagug/Mission_LJC/assets/107788950/9dcbc9c2-c57d-4814-963b-bc1b21925ca2)
 
 1. 게시판 기능
