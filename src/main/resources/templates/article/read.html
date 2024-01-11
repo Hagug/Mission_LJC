@@ -3,53 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>My Board</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<h1>[[${article.title}]]</h1>
-<!--게시글 수정 및 삭제 버튼-->
-<div style="float:left">
-    <button th:onclick="|location.href='@{/boards/article/{id}/update-view(id=${article.id})}'|">수정</button>
+<h1 class="page-title">[[${article.title}]]</h1>
+<div class="page-box">
+    <!--게시글 수정 및 삭제 버튼-->
+    <div class="button-left">
+        <button th:onclick="|location.href='@{/boards/article/{id}/update-view(id=${article.id})}'|">수정</button>
+    </div>
+    <div class="button-right">
+        <form th:action="@{/boards/article/{id}/delete(id=${article.id})}" method="post" onsubmit="return pwdCheck()" >
+            <input type="password" name="password" id="pwd" placeholder="비밀번호" required>
+            <input type="submit" value="삭제">
+        </form>
+    </div>
+    <br>
 
-<!--    <button th:onclick="'location.href=\'' + @{/boards/article/{id}/update-view(id=${article.id})}  '\''">수정</button>-->
-</div>
-<div style="float:right">
-    <form th:action="@{/boards/article/{id}/delete(id=${article.id})}" method="post" onsubmit="return pwdCheck()" >
-        <input type="password" name="password" id="pwd" value="...." required>
-        <input type="submit" value="삭제">
+    <!--게시글 본문 출력-->
+    <p>[[${article.content}]]</p>
+    <br><hr>
+
+    <!--댓글 조회 및 등록-->
+
+    <h4>댓글 등록하기</h4>
+    <form th:action="@{/boards/article/{id}/comment(id=${article.id})}" method="post" style="height:20px;">
+        <div class="button-left input-comment-content">
+            <input type="text" name="content" id="input-comment" placeholder="내용" required>
+        </div>
+        <div class="button-right input-comment-pwd">
+            <input type="password" name="password" id="input-id" placeholder="비밀번호" required>
+            <input type="submit" value="등록">
+        </div>
     </form>
-</div>
-<br>
-<!--게시글 본문 출력-->
-<p>[[${article.content}]]</p>
-
-<!-- 게시판으로 가는 링크-->
-<a th:href="@{/boards/{topic}(topic=${article.topic})}">Back</a>
-
-<!--댓글 조회 및 등록-->
-<h3>댓글</h3>
-<h4>댓글 등록하기</h4>
-<form th:action="@{/boards/article/{id}/comment(id=${article.id})}" method="post" style="height:50px;">
-    <div style="float:left; margin-right: 5px;">
-        <input type="text" name="content" value="내용" style="width:250px; height:50px;">
-    </div>
-    <div style="float:left;">
-        <input type="password" name="password" value="...." style="width:100px">
-        <input type="submit" value="댓글 등록">
-    </div>
-</form>
-
-<!--댓글 출력 및 삭제 기능-->
-<div th:each="comment: ${comments}">
+    <hr>
+    <h4>댓글</h4>
+    <!--댓글 출력 및 삭제 기능-->
+    <div th:each="comment: ${comments}">
         <form th:action="@{/boards/article/{id}/comment/{commentId}/delete(id=${article.id}, commentId=${comment.id})}"
-          method="post">
-<!--              onsubmit="return commentPwdCheck()">-->
-        <p>
-            [[${comment.content}]]
-            <input type="password" name="password" th:id="${comment.id}" value="...." style="width:100px">
-            <input type="submit" value="댓글 삭제">
-        </p>
-    </form>
+              method="post">
+            <p>
+                [[${comment.content}]]
+                <input type="password" name="password" th:id="${comment.id}" placeholder="비밀번호" style="width:100px">
+                <input type="submit" value="댓글 삭제">
+            </p>
+        </form>
+    </div>
 </div>
+
 </body>
 
 <script th:inline="javascript">

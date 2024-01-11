@@ -3,41 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>My Board</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<h1>게시글 작성</h1>
-<form action="/boards/write" method="post">
-    <div class="mb-5">
-        <select name="topic" required>
-            <option value="">주제 선택</option>
-            <option value="자유">자유</option>
-            <option value="개발">개발</option>
-            <option value="일상">일상</option>
-            <option value="사건사고">사건사고</option>
-        </select>
-    </div>
-    <div class="mb-5">
-        <label>
-            제목 <br>
-            <input type="text" name="title" required>
-        </label>
-    </div>
-    <div class="mb-5">
-        <label>
-            내용 <br>
-            <input type="text" name="content" style="height:200px;" required>
-        </label>
-    </div>
-    <div class="mb-5">
-        <label>
-            비밀번호 <br>
-            <input type="password" name="password" required>
-        </label>
-    </div>
-    <div class="mt-5">
-        <input type="submit">
-    </div>
-</form>
-<a href="/boards">돌아가기</a>
+<h1 class="page-title">게시글 작성</h1>
+<div class="page-box">
+    <form calss="article-form" action="/boards/write" method="post">
+        <div class="input-div">
+            <select name="topic" required>
+                <option value="">주제 선택</option>
+                <option value="자유">자유</option>
+                <option value="개발">개발</option>
+                <option value="일상">일상</option>
+                <option value="사건사고">사건사고</option>
+            </select>
+        </div>
+        <div>
+            <label>
+                제목 <br>
+                <input type="text" name="title" id="input-title" style="width:98%;" required>
+            </label>
+        </div>
+        <div class="input-div">
+            <label>
+                내용 <br>
+                <input type="text" name="content" id="input-body" style="height:200px; width:98%;" required>
+            </label>
+        </div>
+        <div class="input-div">
+            <label>
+                비밀번호 <br>
+                <input type="password" name="password" required>
+            </label>
+        </div>
+        <div class="input-div">
+            <input type="submit">
+        </div>
+    </form>
+</div>
 </body>
 </html>

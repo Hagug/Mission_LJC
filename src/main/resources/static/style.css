@@ -1,0 +1,47 @@
+.page-title {
+    text-align: center;
+}
+
+.page-box {
+    border-width: 1px;
+    border-style: solid;
+    border-color:darkgray;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.button-right {
+    float: right;
+}
+
+.button-left {
+    float: left;
+}
+
+.input-div {
+    margin-bottom: 5px;
+}
+
+#input-title {
+    width:98%;
+}
+
+#input-body {
+    width:98%;
+    height: 200px;
+}
+
+.input-comment-content {
+    width: 55%;
+}
+.input-comment-pwd {
+    width: 35%;
+}
+
+#input-comment {
+    width: 100%;
+}
+
+#input-id {
+    width: 50%;
+}

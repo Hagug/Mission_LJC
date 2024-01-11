@@ -3,41 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<h1>게시글 수정하기</h1>
-<form th:action="@{/boards/article/{id}/update(id=${article.id})}" method="post" onsubmit="return pwdCheck()">
-    <div class="mb-5">
-        <select name="topic" required>
-            <option value="">주제 선택</option>
-            <option value="자유">자유</option>
-            <option value="개발">개발</option>
-            <option value="일상">일상</option>
-            <option value="사건사고">사건사고</option>
-        </select>
-    </div>
-    <div class="mb-5">
-        <label>
-            제목 <br>
-            <input type="text" name="title" required>
-        </label>
-    </div>
-    <div class="mb-5">
-        <label>
-            내용 <br>
-            <input type="text" name="content" style="height:200px;" required>
-        </label>
-    </div>
-    <div class="mb-5">
-        <label>
-            비밀번호 확인 <br>
-            <input type="password" name="password" required id="pwd">
-        </label>
-    </div>
-    <div class="mt-5">
-        <input type="submit">
-    </div>
-</form>
+<h1 class="page-title">게시글 수정하기</h1>
+<div class="page-box">
+    <form th:action="@{/boards/article/{id}/update(id=${article.id})}" method="post" onsubmit="return pwdCheck()">
+        <div class="input-div">
+            <select name="topic" required>
+                <option value="">주제 선택</option>
+                <option value="자유">자유</option>
+                <option value="개발">개발</option>
+                <option value="일상">일상</option>
+                <option value="사건사고">사건사고</option>
+            </select>
+        </div>
+        <div class="input-div">
+            <label>
+                제목 <br>
+                <input type="text" name="title" id="input-title" required>
+            </label>
+        </div>
+        <div class="input-div">
+            <label>
+                내용 <br>
+                <input type="text" name="content" id="input-body" required>
+            </label>
+        </div>
+        <div class="input-div">
+            <label>
+                비밀번호 확인 <br>
+                <input type="password" name="password" required id="pwd">
+            </label>
+        </div>
+        <div class="mt-5">
+            <input type="submit">
+        </div>
+    </form>
+</div>
+
 <script th:inline="javascript">
     function pwdCheck() {
         var pwd1 = document.getElementById("pwd").value;

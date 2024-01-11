@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>My Board</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
-<h1>게시판 목록</h1>
-<div th:each="board: ${boards}">
-    <p>[[${board.id}]]. <a th:href="@{/boards/{topic}(topic=${board.topic})}">[[${board.topic}]] 게시판</a></p>
+<h1 class="page-title">게시판 목록</h1>
+<div class="page-box">
+    <div th:each="board: ${boards}">
+        <p>[[${board.id}]]. <a th:href="@{/boards/{topic}(topic=${board.topic})}">[[${board.topic}]] 게시판</a></p>
+    </div>
 </div>
+
 </body>
 </html>

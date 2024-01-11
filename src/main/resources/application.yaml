@@ -4,7 +4,7 @@ spring:
     driver-class-name: org.sqlite.JDBC
   jpa:
     hibernate:
-      ddl-auto: update #create : 매 번 테이블 지우고 새로 생성, update : 테이블이 기존과 달라지는 부분만 생성
+      ddl-auto: create #create : 매 번 테이블 지우고 새로 생성, update : 테이블이 기존과 달라지는 부분만 생성
     show-sql: false
     database-platform: org.hibernate.community.dialect.SQLiteDialect
     defer-datasource-initialization: true
